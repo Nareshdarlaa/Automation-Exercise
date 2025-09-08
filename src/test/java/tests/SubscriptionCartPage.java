@@ -14,18 +14,18 @@ public class SubscriptionCartPage extends BasicTest {
     public void verifySubscriptionInCartPage() {
         WebDriver driver = getDriver();
 
-        // 1️ Launch browser and directly open Cart page
+        // 1 Launch browser and directly open Cart page
         driver.get("https://automationexercise.com/view_cart");
 
-        // 2️ Scroll to footer and verify 'SUBSCRIPTION' text
+        // 2 Scroll to footer and verify 'SUBSCRIPTION' text
         HomePage homePage = new HomePage(driver);
         WebElement subscriptionElement = homePage.getSubscriptionElement();
         Assert.assertTrue(subscriptionElement.isDisplayed(), " 'SUBSCRIPTION' text is not visible!");
 
-        // 3️ Enter email and click subscribe
+        // 3 Enter email and click subscribe
         homePage.subscribe("testemail@example.com");
 
-        // 4️ Verify success message
+        // 4 Verify success message
         WebElement successMessage = homePage.getAlertSuccessSubscribe();
         Assert.assertTrue(successMessage.isDisplayed(), " Success message not visible!");
         Assert.assertEquals(successMessage.getText().trim(),
