@@ -32,19 +32,19 @@ public class HomePageTest {
 
     @Test(priority = 1)
     public void verifyHomePageIsVisible() {
-        Assert.assertTrue(homePage.isHomePageVisible(), "❌ Home page is NOT visible!");
+        Assert.assertTrue(homePage.isHomePageVisible(), " Home page is NOT visible!");
     }
 
     @Test(priority = 2)
     public void verifyNavigationToLoginPage() {
         LoginPage loginPage = homePage.clickLoginLink(); // returns LoginPage
-        Assert.assertTrue(loginPage.isLoginFormVisible(), "❌ Navigation to login page failed!");
+        Assert.assertTrue(loginPage.isLoginFormVisible(), " Navigation to login page failed!");
     }
 
     @Test(priority = 3)
     public void verifyNavigationToProductsPage() {
         homePage.clickProducts();
-        Assert.assertTrue(driver.getCurrentUrl().contains("products"), "❌ Navigation to Products page failed!");
+        Assert.assertTrue(driver.getCurrentUrl().contains("products"), " Navigation to Products page failed!");
     }
 
  
