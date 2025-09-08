@@ -13,34 +13,34 @@ public class ContactUsForm extends BasicTest {
     @Test(description = "Test Case 6: Contact Us Form Submission")
     public void contactUsFormTest() {
 
-        // 1️⃣ Launch browser & 2️⃣ Navigate to URL
+        // 1 Launch browser & 2 Navigate to URL
         getDriver().get("http://automationexercise.com");
 
-        // 3️⃣ Verify home page is visible
+        // 3 Verify home page is visible
         HomePage homePage = new HomePage(getDriver());
         Assert.assertTrue(homePage.isHomePageVisible(), "Home page is not visible.");
 
-        // 4️⃣ Click 'Contact Us'
+        // 4 Click 'Contact Us'
         ContactUs contactUs = homePage.clickContactUsButton();
 
-        // 5️⃣ Verify 'GET IN TOUCH' is visible
+        // 5 Verify 'GET IN TOUCH' is visible
         Assert.assertTrue(contactUs.getGetInTouch().isDisplayed(), "'GET IN TOUCH' is not visible.");
 
-        // 6️⃣ Fill contact form and upload file
+        // 6 Fill contact form and upload file
         contactUs.fillForm();
 
-        // 7️⃣ Click 'Submit'
+        // 7 Click 'Submit'
         contactUs.submitButtonClick();
 
-        // 8️⃣ Accept alert if it appears
+        // 8 Accept alert if it appears
         contactUs.okButtonClick();
 
-        // 9️⃣ Verify success message
+        // 9 Verify success message
         String expectedMessage = "Success! Your details have been submitted successfully.";
         String actualMessage = contactUs.getAlertSuccess().getText();
         Assert.assertEquals(actualMessage, expectedMessage, "Success message is incorrect.");
 
-        // 🔟 Click Home button and verify landing on home page
+        // Click Home button and verify landing on home page
         HomePage newHomePage = contactUs.homePageButtonClick();
         Assert.assertTrue(newHomePage.isHomePageVisible(), "Home page is not visible after clicking Home button.");
     }
