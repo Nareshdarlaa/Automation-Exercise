@@ -24,40 +24,40 @@ public class SearchProduct extends BasicTest {
         WebDriver driver = getDriver();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-        // 1️⃣ Navigate directly to Products page
+        // 1 Navigate directly to Products page
         driver.get("https://automationexercise.com/products");
 
         ProductsPage productsPage = new ProductsPage(driver);
 
-        // 2️⃣ Verify 'ALL PRODUCTS' heading is visible
+        // 2 Verify 'ALL PRODUCTS' heading is visible
         WebElement allProductsHeading = wait.until(
                 ExpectedConditions.visibilityOf(productsPage.getTitleTextCenter())
         );
         Assert.assertEquals(allProductsHeading.getText(), "ALL PRODUCTS",
-                "❌ User is not on ALL PRODUCTS page!");
+                " User is not on ALL PRODUCTS page!");
 
-        // 3️⃣ Enter product name in search input and click search button
+        // 3 Enter product name in search input and click search button
         productsPage.fillSearchProductInput(searchKeyword);
 
-        // 4️⃣ Verify 'SEARCHED PRODUCTS' heading
+        // 4 Verify 'SEARCHED PRODUCTS' heading
         WebElement searchedHeading = wait.until(
                 ExpectedConditions.visibilityOf(productsPage.getTitleTextCenter())
         );
         Assert.assertEquals(searchedHeading.getText(), "SEARCHED PRODUCTS",
-                "❌ 'SEARCHED PRODUCTS' is not visible!");
+                " 'SEARCHED PRODUCTS' is not visible!");
 
-        // 5️⃣ Verify at least one product matches search
+        // 5 Verify at least one product matches search
         List<String> productNames = productsPage.getProductsSearchNames();
-        Assert.assertTrue(productNames.size() > 0, "❌ No products found in search!");
+        Assert.assertTrue(productNames.size() > 0, " No products found in search!");
 
         boolean foundMatch = productNames.stream()
                 .anyMatch(p -> p.toLowerCase().contains(searchKeyword.toLowerCase()));
 
-        Assert.assertTrue(foundMatch, "❌ No product matched the search keyword: " + searchKeyword);
+        Assert.assertTrue(foundMatch, " No product matched the search keyword: " + searchKeyword);
 
         // Log results
         for (String product : productNames) {
-            System.out.println("🔎 Found product: " + product);
+            System.out.println(" Found product: " + product);
         }
     }
 }
