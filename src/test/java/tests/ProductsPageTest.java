@@ -21,18 +21,18 @@ public class ProductsPageTest extends BasicTest {
         WebDriver driver = getDriver();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 
-        // 1️⃣ Launch browser and navigate directly to Products page
+        // 1 Launch browser and navigate directly to Products page
         driver.get("https://automationexercise.com/products");
 
-        // 2️⃣ Verify 'ALL PRODUCTS' page
+        // 2 Verify 'ALL PRODUCTS' page
         ProductsPage productsPage = new ProductsPage(driver);
         WebElement allProductsHeading = wait.until(ExpectedConditions.visibilityOf(productsPage.getTitleTextCenter()));
         Assert.assertEquals(allProductsHeading.getText().trim(), "ALL PRODUCTS", "User is not on ALL PRODUCTS page!");
 
-        // 3️⃣ Click 'View Product' of first product
+        // 3 Click 'View Product' of first product
         ProductDetailPage productDetailPage = productsPage.viewProductOfFirstProductButtonClick();
 
-        // 4️⃣ Verify product details are visible
+        // 4 Verify product details are visible
         Assert.assertTrue(productDetailPage.getProductName().isDisplayed(), "Product name not visible!");
         Assert.assertTrue(productDetailPage.getProductCategory().isDisplayed(), "Product category not visible!");
         Assert.assertTrue(productDetailPage.getProductPrice().isDisplayed(), "Product price not visible!");
