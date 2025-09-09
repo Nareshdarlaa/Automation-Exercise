@@ -13,7 +13,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.release>17</maven.compiler.release>
+        <maven.compiler.release>11</maven.compiler.release>
         <lombok.version>1.18.34</lombok.version>
     </properties>
 
@@ -101,13 +101,13 @@
 
     <build>
         <plugins>
-            <!-- Compiler Plugin (Java 17 + Lombok compatible) -->
+            <!-- Compiler Plugin for Java 11 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.11.0</version>
                 <configuration>
-                    <release>17</release>
+                    <release>11</release>
                     <compilerArgs>
                         <arg>-parameters</arg>
                     </compilerArgs>
