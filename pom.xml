@@ -16,17 +16,22 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <lombok.version>1.18.34</lombok.version>
-        <cucumber.report.dir>reports/cucumber-reports</cucumber.report.dir>
-        <extent.report.dir>reports/extent-reports</extent.report.dir>
     </properties>
 
     <dependencies>
-        <!-- JUnit -->
+        <!-- JUnit 4 (for Cucumber) -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.13.2</version>
             <scope>test</scope>
+        </dependency>
+
+        <!-- TestNG -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.10.2</version>
         </dependency>
 
         <!-- Selenium -->
@@ -46,13 +51,6 @@
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>5.4.1</version>
-        </dependency>
-
-        <!-- TestNG -->
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>7.10.2</version>
         </dependency>
 
         <!-- Logging -->
@@ -81,8 +79,9 @@
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-testng</artifactId>
+            <artifactId>cucumber-junit</artifactId>
             <version>7.15.0</version>
+            <scope>test</scope>
         </dependency>
 
         <!-- Extent Reports -->
@@ -103,7 +102,7 @@
 
     <build>
         <plugins>
-            <!-- Compiler Plugin for Java 11 + Lombok -->
+            <!-- Compiler Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -111,17 +110,13 @@
                 <configuration>
                     <source>11</source>
                     <target>11</target>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                            <version>${lombok.version}</version>
-                        </path>
-                    </annotationProcessorPaths>
+                    <compilerArgs>
+                        <arg>-parameters</arg>
+                    </compilerArgs>
                 </configuration>
             </plugin>
 
-            <!-- Surefire Plugin for TestNG + Cucumber + ExtentReports -->
+            <!-- Surefire Plugin for TestNG and Cucumber -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -129,13 +124,6 @@
                 <configuration>
                     <forkedProcessTimeoutInSeconds>300</forkedProcessTimeoutInSeconds>
                     <useSystemClassLoader>false</useSystemClassLoader>
-                    <includes>
-                        <include>**/*Test.java</include>
-                    </includes>
-                    <systemPropertyVariables>
-                        <cucumber.report.dir>${cucumber.report.dir}</cucumber.report.dir>
-                        <extent.report.dir>${extent.report.dir}</extent.report.dir>
-                    </systemPropertyVariables>
                 </configuration>
             </plugin>
         </plugins>
