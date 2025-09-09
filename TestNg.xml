@@ -1,0 +1,21 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Capstone Automation Test Suite" parallel="classes" thread-count="5">
+    <test name="All Test Cases">
+        <classes>
+            <class name="tests.AddProductCart"/>
+            <class name="tests.AddReviewOnProduct"/>
+            <class name="tests.BaseTest"/>
+            <class name="tests.ContactUsForm"/>
+            <class name="tests.ExistingEmail"/>
+            <class name="tests.HomePageTest"/>
+            <class name="tests.LoginTest"/>
+            <class name="tests.Logout"/>
+            <class name="tests.PaymentPageTest"/>
+            <class name="tests.ProductsPageTest"/>
+            <class name="tests.RegisterUserTest"/>
+            <class name="tests.SearchProduct"/>
+            <class name="tests.SubscriptionCartPage"/>
+        </classes>
+    </test>
+
+</suite>
