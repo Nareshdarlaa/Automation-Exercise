@@ -116,7 +116,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Surefire Plugin for TestNG + Cucumber HTML output -->
+            <!-- Surefire Plugin for TestNG + Cucumber + ExtentReports -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -129,28 +129,6 @@
                         <extent.report.dir>${extent.report.dir}</extent.report.dir>
                     </systemPropertyVariables>
                 </configuration>
-            </plugin>
-
-            <!-- Cucumber Maven Plugin for HTML report generation -->
-            <plugin>
-                <groupId>io.cucumber</groupId>
-                <artifactId>cucumber-maven-plugin</artifactId>
-                <version>7.15.0</version>
-                <executions>
-                    <execution>
-                        <id>run-cucumber-tests</id>
-                        <goals>
-                            <goal>test</goal>
-                        </goals>
-                        <configuration>
-                            <glue>stepdefinitions</glue>
-                            <features>src/test/resources/features</features>
-                            <plugin>
-                                <plugin>html:${cucumber.report.dir}/cucumber-report.html</plugin>
-                            </plugin>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
